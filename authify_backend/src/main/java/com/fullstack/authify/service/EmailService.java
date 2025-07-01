@@ -21,6 +21,7 @@ public class EmailService {
         message.setTo(toEmail);
         message.setSubject("Welcome to Our Platform");
         message.setText("Hello " + name + ",\n\nThanks for registering with us!\n\nRegards, \nAuthify Team");
+        mailSender.send(message);
     }
 
 }
