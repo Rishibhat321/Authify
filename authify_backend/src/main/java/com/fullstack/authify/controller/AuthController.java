@@ -2,6 +2,7 @@ package com.fullstack.authify.controller;
 
 import com.fullstack.authify.io.AuthRequest;
 import com.fullstack.authify.io.AuthResponse;
+import com.fullstack.authify.service.ProfileService;
 import com.fullstack.authify.service.impl.AppUserDetailsService;
 import com.fullstack.authify.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -35,6 +37,9 @@ public class AuthController {
 
     @Autowired
     private final JwtUtil jwtUtil;
+
+    @Autowired
+    private final ProfileService profileService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
@@ -94,6 +99,15 @@ public class AuthController {
     public ResponseEntity<Boolean> isAuthenticated(@CurrentSecurityContext(expression = "authentication?.name") String email) {
         return ResponseEntity.ok(email != null);
 
+    }
+
+    @PostMapping("/send-reset-otp")
+    public void sendResetOtp(@RequestParam String email) {
+        try{
+            profileService.sendResetOtp(email);
+        } catch(Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
     }
 
 
