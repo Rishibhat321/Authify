@@ -24,4 +24,17 @@ public class EmailService {
         mailSender.send(message);
     }
 
+    public void sendResetOtpEmail(String toEmail, String otp) {
+        // create mail object
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(fromEmail);
+        message.setTo(toEmail);
+        message.setSubject("Password Reset OTP");
+        message.setText("Your otp for resetting your password is " + otp + ". Use this OTP to proceed with resetting your password");
+
+        // Use mail Sender to send the email
+        mailSender.send(message);
+
+    }
+
 }
