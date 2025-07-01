@@ -2,6 +2,7 @@ package com.fullstack.authify.controller;
 
 import com.fullstack.authify.io.ProfileRequest;
 import com.fullstack.authify.io.ProfileResponse;
+import com.fullstack.authify.service.EmailService;
 import com.fullstack.authify.service.ProfileService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,15 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
+    @Autowired
+    private final EmailService emailService;
+
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public ProfileResponse register(@Valid @RequestBody ProfileRequest request) {
         ProfileResponse response = profileService.createProfile(request);
         // TODO: send Welcome email
+        emailService.sendWelcomeEmail(response.getEmail(), response.getName());
         return response;
     }
 
