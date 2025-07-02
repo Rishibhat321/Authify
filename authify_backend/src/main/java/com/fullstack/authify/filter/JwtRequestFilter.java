@@ -38,11 +38,25 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         // get the servlet path
        String path =  request.getServletPath();
 
+
        // don't validate the jwt tokens for the public urls
         if(PUBLIC_URLS.contains(path)) {
             filterChain.doFilter(request, response);
             return;
         }
+
+
+
+        // Skip token validation for public paths
+ /*       if (path.startsWith("/api/login") ||
+                path.startsWith("/api/register") ||
+                path.startsWith("/api/send-reset-otp") ||
+                path.startsWith("/api/reset-password") ||
+                path.startsWith("/api/logout")) {
+            filterChain.doFilter(request, response);
+            return;
+        }                                                     */
+
 
         String jwt = null;
         String email = null;
