@@ -2,9 +2,11 @@ package com.fullstack.authify.controller;
 
 import com.fullstack.authify.io.AuthRequest;
 import com.fullstack.authify.io.AuthResponse;
+import com.fullstack.authify.io.ResetPasswordRequest;
 import com.fullstack.authify.service.ProfileService;
 import com.fullstack.authify.service.impl.AppUserDetailsService;
 import com.fullstack.authify.util.JwtUtil;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -108,6 +110,16 @@ public class AuthController {
         } catch(Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
+    }
+
+    @PostMapping("/reset-password")
+    public void resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
+        try{
+            profileService.resetPassword(request.getEmail(), request.getOtp(), request.getNewPassword());
+        } catch(Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        }
+
     }
 
 
