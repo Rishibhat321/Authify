@@ -4,7 +4,7 @@ import com.fullstack.authify.io.AuthRequest;
 import com.fullstack.authify.io.AuthResponse;
 import com.fullstack.authify.io.ResetPasswordRequest;
 import com.fullstack.authify.service.ProfileService;
-import com.fullstack.authify.service.impl.AppUserDetailsService;
+import com.fullstack.authify.service.AppUserDetailsService;
 import com.fullstack.authify.util.JwtUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

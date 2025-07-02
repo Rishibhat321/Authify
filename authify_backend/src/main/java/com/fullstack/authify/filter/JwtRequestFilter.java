@@ -1,6 +1,6 @@
 package com.fullstack.authify.filter;
 
-import com.fullstack.authify.service.impl.AppUserDetailsService;
+import com.fullstack.authify.service.AppUserDetailsService;
 import com.fullstack.authify.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.fullstack.authify.service.impl;
+package com.fullstack.authify.service;
 
 import com.fullstack.authify.entity.UserEntity;
 import com.fullstack.authify.repository.UserRepository;
