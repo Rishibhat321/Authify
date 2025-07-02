@@ -29,7 +29,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private final JwtUtil jwtUtil;
 
-    private static final List<String> PUBLIC_URLS = List.of("/login", "/register", "/send-reset-otp", "/reset-password", "/logout");
+    private static final List<String> PUBLIC_URLS = List.of("/api/login", "/api/register", "/api/send-reset-otp", "/api/reset-password", "/api/logout");
 
 
     @Override
