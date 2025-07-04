@@ -11,7 +11,7 @@ const  Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const [backendURL, setIsLoggedIn] = useContext(AppContext);
+    const {backendURL, setIsLoggedIn, getUserData} = useContext(AppContext);
     const navigate = useNavigate();
 
 
@@ -35,6 +35,7 @@ const  Login = () => {
                 const response = await axios.post(`${backendURL}/login`, {email, password});
                 if (response.status == 200) {
                     setIsLoggedIn(true);
+                    getUserData();
                     navigate("/");
                 }
                 else {
