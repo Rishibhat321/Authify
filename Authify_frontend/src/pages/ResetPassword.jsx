@@ -112,28 +112,18 @@ const ResetPassword = () => {
                                 />
                             ))}
 
-                            {/* New Password form */}
-                            {isOtpSubmitted && isEmailSent && (
-                                <div className="rounded-4 p-4 text-center" style={{width: "100%", maxWidth: "400px"}}>
-                                    <div/>
-                            )}
-
                         </div>
 
 
                         <button className="btn btn-primary w-100 fw-semibold" disabled={loading} >
                             {loading ? "Verifying..." : "Verify email"}
                         </button>
-
-
                     </div>
 
-                )
-                }
+                )}
 
             </div>
-        )
-            }
+        )}
 
 
     export default ResetPassword;
