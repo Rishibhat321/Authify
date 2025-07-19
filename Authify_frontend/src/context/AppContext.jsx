@@ -42,14 +42,7 @@ export const AppContextProvider = (props) => {
             }
         }
         catch(error) {
-            if(error.response) {
-                const msg = error.response.data?.message || "Authetication check failed";
-                toast.error(msg);
-            }
-            else{
-                toast.error(error.message);
-            }
-            setIsLoggedIn(false);
+           console.error(error);
         }
     }
 
