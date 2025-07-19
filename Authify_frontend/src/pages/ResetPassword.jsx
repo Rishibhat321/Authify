@@ -11,9 +11,9 @@ const ResetPassword = () => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [newPassword, setNewPassword] = useState("");
-    const [isEmailSent, setIsEmailSent] = useState(false);
+    const [isEmailSent, setIsEmailSent] = useState(true);
     const [otp, setOtp] = useState("");
-    const [isOtpSubmitted, setIsOtpSubmitted] = useState(false);
+    const [isOtpSubmitted, setIsOtpSubmitted] = useState(true);
     const {getUserData, isLoggedIn, userData, backendURL} = useContext(AppContext);
 
     axios.defaults.withCredentials = true;
@@ -112,15 +112,13 @@ const ResetPassword = () => {
                                 />
                             ))}
 
-                        </div>
-
 
                         <button className="btn btn-primary w-100 fw-semibold" disabled={loading} >
                             {loading ? "Verifying..." : "Verify email"}
                         </button>
                     </div>
 
-                )}
+                        )}
 
             </div>
         )}
